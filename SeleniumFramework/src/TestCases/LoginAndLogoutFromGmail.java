@@ -7,7 +7,7 @@ import CustomLibraries.Functions;
 public class LoginAndLogoutFromGmail extends Functions{
   @Test
   public void f() {
-	  //this is my second commit
+	  //this is my second 
 	  /*startBrowser();
 	  waitForElement(10000);*/
 	  getObjName();
