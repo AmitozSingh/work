@@ -7,7 +7,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
+
+
+
+
+
 
 
 
@@ -20,12 +27,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
 
 public class FrameWorkFunctions {
 	WebDriver driver = null;
+	private Map<String, String> cache;
 	 private static String passText = "PASS: ";
 	  private static String failText = "FAIL: ";
 	  private static String verificationHighlightColor = "magenta";
+	  protected static Map<String, String> objMap = new TreeMap(String.CASE_INSENSITIVE_ORDER);
 	
 	public void  startBrowser()
 	{
@@ -106,19 +116,28 @@ public class FrameWorkFunctions {
 		getdriver().findElement(Element).sendKeys(data);
 	}
 	
-	public void  getObjName()
+	public void  cacheObjRepository()
 	
-	{ 
+	{  String key = "";
+		String value = "";
 		try {
+			
 			Class <ObjectRepository> classobj=ObjectRepository.class;
-			Field[] var=classobj.getDeclaredFields();
-			Field varvalues=classobj.getField("textbox_Email");
-			String varvalue=varvalues.toString();
-			System.out.println("textbox_Email ="+varvalue);
-			for(int i=0;i<var.length;i++)
+			Field[] fields=classobj.getFields();
+			for(int i=0;i<fields.length;i++)
 			{
-				System.out.println("variable name ="+var[i]);
+				 key = fields[i].get(this).toString();
+				 value = fields[i].getName();
+			
+			if(objMap.containsKey(key))
+			{
+				value=value+"|"+(String)objMap.get(key);
 			}
+			 objMap.put(key, value);
+		        cache.put(key, value);
+			
+			}
+			
 			
 		} catch (Exception e) {
 			System.out.println("Error"+e.getMessage());
@@ -148,10 +167,23 @@ public class FrameWorkFunctions {
 		
 	}*/
 	
+	 @BeforeSuite(alwaysRun=true)
+	  public void bootCTM()
+	  {
+	    
+	    cacheObjRepository();
+	  }
+	 
 	public void closeBrowser()
 	{
 		getdriver().close();
 	}
+	
+	 public String getObjName(By locator)
+	  {
+		 return (String)objMap.get(locator.toString());
+		 
+	  }
 }
 
 

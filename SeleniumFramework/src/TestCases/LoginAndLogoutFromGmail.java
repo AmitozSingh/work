@@ -5,12 +5,15 @@ import org.testng.annotations.Test;
 import CustomLibraries.Functions;
 
 public class LoginAndLogoutFromGmail extends Functions{
+	
+		
   @Test
   public void f() {
 	  //this is my second 
-	  /*startBrowser();
-	  waitForElement(10000);*/
-	  getObjName();
+	  startBrowser();
+	  waitForElement(10000);
+	String abc=  getObjName(textbox_Email);
+	System.out.println(abc);
 	  waitForElement(10000);
 	  clearAndSendkeys(textbox_Email, "amitoznarang1992");
 	  click(button_next);
