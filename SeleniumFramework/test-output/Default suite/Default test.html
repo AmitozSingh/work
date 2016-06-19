@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sun Jun 12 16:34:30 IST 2016</td>
+<td>Started on:</td><td>Sun Jun 19 16:32:40 IST 2016</td>
 </tr>
-<tr><td>Total time:</td><td>5 seconds (5079 ms)</td>
+<tr><td>Total time:</td><td>6 seconds (6617 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,9 +76,10 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='TestCases.LoginAndLogoutFromGmail.f()'><b>f</b><br>Test class: TestCases.LoginAndLogoutFromGmail</td>
-<td><div><pre>java.lang.NullPointerException
-	at CustomLibraries.FrameWorkFunctions.closeBrowser(FrameWorkFunctions.java:153)
-	at TestCases.LoginAndLogoutFromGmail.f(LoginAndLogoutFromGmail.java:24)
+<td><div><pre>java.lang.RuntimeException: java.lang.InstantiationException: CustomLibraries.GMILLoginPage
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:134)
+	at org.openqa.selenium.support.PageFactory.initElements(PageFactory.java:64)
+	at TestCases.LoginAndLogoutFromGmail.f(LoginAndLogoutFromGmail.java:17)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -103,10 +104,18 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
-</pre></div><a href='#' onClick='toggleBox("stack-trace14634747", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace14634747'><pre>java.lang.NullPointerException
-	at CustomLibraries.FrameWorkFunctions.closeBrowser(FrameWorkFunctions.java:153)
-	at TestCases.LoginAndLogoutFromGmail.f(LoginAndLogoutFromGmail.java:24)
+Caused by: java.lang.InstantiationException: CustomLibraries.GMILLoginPage
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:131)
+	... 26 more
+Caused by: java.lang.NoSuchMethodException: CustomLibraries.GMILLoginPage.&lt;init&gt;()
+	at java.lang.Class.getConstructor0(Unknown Source)
+	... 28 more
+</pre></div><a href='#' onClick='toggleBox("stack-trace16287990", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace16287990'><pre>java.lang.RuntimeException: java.lang.InstantiationException: CustomLibraries.GMILLoginPage
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:134)
+	at org.openqa.selenium.support.PageFactory.initElements(PageFactory.java:64)
+	at TestCases.LoginAndLogoutFromGmail.f(LoginAndLogoutFromGmail.java:17)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -131,9 +140,16 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+Caused by: java.lang.InstantiationException: CustomLibraries.GMILLoginPage
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:131)
+	... 26 more
+Caused by: java.lang.NoSuchMethodException: CustomLibraries.GMILLoginPage.&lt;init&gt;()
+	at java.lang.Class.getConstructor0(Unknown Source)
+	... 28 more
 </pre></div></td>
-<td>5</td>
-<td>TestCases.LoginAndLogoutFromGmail@c1fdc4</td></tr>
+<td>6</td>
+<td>TestCases.LoginAndLogoutFromGmail@d851c9</td></tr>
 </table><p>
 </body>
 </html>

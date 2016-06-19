@@ -49,12 +49,12 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\TATA-OMNI\AppData\Local\Temp\testng-eclipse--757537705\testng-customsuite.xml</span>
+                    <span>C:\Users\TATA-OMNI\AppData\Local\Temp\testng-eclipse-476560582\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
-                    <span class="test-stats">2 tests</span>
+                    <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -128,9 +128,10 @@
                   <a name="f">
                   </a> <!-- f -->
                   <span class="method-name">f</span>
-                  <div class="stack-trace">java.lang.NullPointerException
-	at CustomLibraries.FrameWorkFunctions.closeBrowser(FrameWorkFunctions.java:153)
-	at TestCases.LoginAndLogoutFromGmail.f(LoginAndLogoutFromGmail.java:24)
+                  <div class="stack-trace">java.lang.RuntimeException: java.lang.InstantiationException: CustomLibraries.GMILLoginPage
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:134)
+	at org.openqa.selenium.support.PageFactory.initElements(PageFactory.java:64)
+	at TestCases.LoginAndLogoutFromGmail.f(LoginAndLogoutFromGmail.java:17)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -155,6 +156,13 @@
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:113)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:206)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:177)
+Caused by: java.lang.InstantiationException: CustomLibraries.GMILLoginPage
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:131)
+	... 26 more
+Caused by: java.lang.NoSuchMethodException: CustomLibraries.GMILLoginPage.&lt;init&gt;()
+	at java.lang.Class.getConstructor0(Unknown Source)
+	... 28 more
 
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -164,7 +172,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\TATA-OMNI\AppData\Local\Temp\testng-eclipse--757537705\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\TATA-OMNI\AppData\Local\Temp\testng-eclipse-476560582\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -176,15 +184,6 @@
       &lt;class name=&quot;TestCases.LoginAndLogoutFromGmail&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
-  &lt;test name=&quot;Default test(failed)&quot;&gt;
-    &lt;classes&gt;
-      &lt;class name=&quot;TestCases.LoginAndLogoutFromGmail&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;f&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- TestCases.LoginAndLogoutFromGmail --&gt;
-    &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Default test(failed) --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -197,9 +196,6 @@
             <ul>
               <li>
                 <span class="test-name">Default test (1 class)</span>
-              </li>
-              <li>
-                <span class="test-name">Default test(failed) (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -229,12 +225,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'f')
 data.setCell(0, 2, 'TestCases.LoginAndLogoutFromGmail')
-data.setCell(0, 3, 5027);
+data.setCell(0, 3, 6555);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 5 seconds</span>
+              <span class="suite-total-time">Total running time: 6 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->

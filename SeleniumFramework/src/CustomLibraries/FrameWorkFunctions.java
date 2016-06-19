@@ -21,11 +21,14 @@ import java.util.concurrent.TimeUnit;
 
 
 
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 
@@ -35,6 +38,7 @@ public class FrameWorkFunctions {
 	 private static String passText = "PASS: ";
 	  private static String failText = "FAIL: ";
 	  private static String verificationHighlightColor = "magenta";
+	  Object obj;
 	  protected static Map<String, String> objMap = new TreeMap(String.CASE_INSENSITIVE_ORDER);
 	
 	public void  startBrowser()
@@ -106,17 +110,17 @@ public class FrameWorkFunctions {
 		Reporter.log(message);
 	}
 
-	public void click(By Element)
+	public void click(WebElement Element)
 	{
-		getdriver().findElement(Element).click();
+		Element.click();
 	}
-	public void clearAndSendkeys(By Element,String data)
+	public void clearAndSendkeys(WebElement Element,String data)
 	{
-		getdriver().findElement(Element).clear();
-		getdriver().findElement(Element).sendKeys(data);
+		Element.clear();
+		Element.sendKeys(data);
 	}
 	
-	public void  cacheObjRepository()
+	public void  cacheObjRepository(Object obj)
 	
 	{  String key = "";
 		String value = "";
@@ -134,7 +138,7 @@ public class FrameWorkFunctions {
 				value=value+"|"+(String)objMap.get(key);
 			}
 			 objMap.put(key, value);
-		        cache.put(key, value);
+		       
 			
 			}
 			
@@ -146,11 +150,18 @@ public class FrameWorkFunctions {
 		
 	}
 	
-	/*public void verifyElementPresentOnPage(By locator)
+	public  void loadojectRepository()
+	{
+		GMILLoginPage obj=PageFactory.initElements(getdriver(), GMILLoginPage.class);	
+	cacheObjRepository(obj);
+	}
+
+	
+	public void verifyElementPresentOnPage(WebElement locator)
 	{
 		try {
-			WebElement element=getdriver().findElement(locator);
-			if(element.isDisplayed())
+			
+			if(locator.isDisplayed())
 			{
 				 logReport(passText + "verifyElementPresentOnPage: Element found. Element-> " + getObjName(locator));
 			}
@@ -165,23 +176,23 @@ public class FrameWorkFunctions {
 		}
 		
 		
-	}*/
+	}
 	
-	 @BeforeSuite(alwaysRun=true)
+	/* @BeforeSuite(alwaysRun=true)
 	  public void bootCTM()
 	  {
 	    
-	    cacheObjRepository();
-	  }
+		 loadojectRepository();
+	  }*/
 	 
 	public void closeBrowser()
 	{
 		getdriver().close();
 	}
 	
-	 public String getObjName(By locator)
+	 public String getObjName(WebElement webElement)
 	  {
-		 return (String)objMap.get(locator.toString());
+		 return (String)objMap.get(webElement.toString());
 		 
 	  }
 }
