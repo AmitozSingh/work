@@ -23,14 +23,19 @@ import java.util.concurrent.TimeUnit;
 
 
 
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.Annotations;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
+
+import CustomLibraries.GMILLoginPage;
 
 public class FrameWorkFunctions {
 	WebDriver driver = null;
@@ -40,6 +45,8 @@ public class FrameWorkFunctions {
 	  private static String verificationHighlightColor = "magenta";
 	  Object obj;
 	  protected static Map<String, String> objMap = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+	  
+	  CustomLibraries.GMILLoginPage objGMIL;
 	
 	public void  startBrowser()
 	{
@@ -120,18 +127,29 @@ public class FrameWorkFunctions {
 		Element.sendKeys(data);
 	}
 	
+	public By getby(String fieldname,Object obj)
+	{
+		try {
+			return new Annotations(obj.getClass().getDeclaredField(fieldname)).buildBy();
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			return null;
+		} 
+	}
 	public void  cacheObjRepository(Object obj)
 	
 	{  String key = "";
 		String value = "";
 		try {
 			
-			Class <ObjectRepository> classobj=ObjectRepository.class;
-			Field[] fields=classobj.getFields();
+			
+			Field[] fields=obj.getClass().getDeclaredFields();
 			for(int i=0;i<fields.length;i++)
 			{
-				 key = fields[i].get(this).toString();
+				 key = getby(fields[i].getName(), obj).toString();
+				 System.out.println(key);
 				 value = fields[i].getName();
+				 System.out.println(value);
 			
 			if(objMap.containsKey(key))
 			{
@@ -152,8 +170,9 @@ public class FrameWorkFunctions {
 	
 	public  void loadojectRepository()
 	{
-		GMILLoginPage obj=PageFactory.initElements(getdriver(), GMILLoginPage.class);	
-	cacheObjRepository(obj);
+		
+		objGMIL=PageFactory.initElements(getdriver(), CustomLibraries.GMILLoginPage.class);	
+	cacheObjRepository(objGMIL);
 	}
 
 	

@@ -18,9 +18,7 @@ public class GMILLoginPage {
 	@FindBy(how=How.CSS,using="input#Passwd")private WebElement textbox_password;
 	@FindBy(how=How.CSS,using="input#signIn")private WebElement button_SignIn;
 
-	public WebDriver getDriver() {
-		return driver;
-	}
+	
 	public WebElement getTextbox_Email() {
 		return textbox_Email;
 	}
